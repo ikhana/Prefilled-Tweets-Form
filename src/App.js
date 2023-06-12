@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StepOne from './components/Steps/UsernameStep';
+import StepTwo from './components/Steps/LinkedInStep';
+import StepThree from './components/Steps/EmailStep';
+import StepFour from './components/Steps/CountryStep';
+import StepFive from './components/Steps/GroupStep';
+import FinalStep from './components/Steps/ButtonStep';
 import './App.css';
 
-function App() {
+const App = () => {
+  // Initializing state for form data
+  const [formData, setFormData] = useState({
+    username: '',
+    linkedin: '',
+    email:'',
+    country: '',
+    group: ''
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<StepOne formData={formData} setFormData={setFormData} />} />
+          <Route path="/step-two" element={<StepTwo formData={formData} setFormData={setFormData} />} />
+          <Route path="/step-three" element={<StepThree formData={formData} setFormData={setFormData} />} />
+          <Route path="/step-four" element={<StepFour  formData={formData} setFormData={setFormData} />} />
+          <Route path="/step-five" element={<StepFive formData={formData} setFormData={setFormData} />} />
+          <Route path="/final-step" element={<FinalStep  formData={formData} />} />
+
+
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

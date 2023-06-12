@@ -2,32 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UsernameStep.css'; 
 
-function UsernameStep({ formData, setFormData }) {
+function EmailStep({ formData, setFormData }) {
   const navigate = useNavigate();
   
- 
-  const [username, setUsername] = useState(formData.username || '');
+  
+  const [email, setEmail] = useState(formData.email|| '');
 
   const handleNext = () => {
    
-    setFormData({ ...formData, username });
+    setFormData({ ...formData,  email});
     
-   
-    navigate('/step-two');
+  
+    navigate('/step-four');
   }
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>Enter your twitter handle</h2>
+      <h2 className='text-shine'>Your email Please ?</h2>
       <input
         type="text"
         placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <button onClick={handleNext}>Next</button>
     </div>
   );
 }
 
-export default UsernameStep;
+export default EmailStep;
