@@ -26,7 +26,8 @@ function EmailStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>Your email Please ?</h2>
+      <h2 className='text-shine'>"We promise no alien spam! Drop your email in the box below. It's our hotline for important updates and winner announcements."
+</h2>
       <input
         type="email"
         placeholder="Email"

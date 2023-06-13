@@ -11,7 +11,7 @@ const StartStep = () => {
 
   return (
     <div className='username-container'>
-      <h1>Welcome to our form!</h1>
+      <h3>"Hey superstar! Buckle up for an adventure into the Twitterverse. Click 'Start' and let's rocket launch into this escapade!"</h3>
       <button onClick={handleStart}>Start</button>
     </div>
   );

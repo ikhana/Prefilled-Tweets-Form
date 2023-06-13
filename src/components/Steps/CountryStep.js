@@ -38,7 +38,8 @@ function CountryStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>Select your country</h2>
+      <h2 className='text-shine'>"Even in the vast universe, home is where the heart is! Select your planet... ahem... country from the dropdown list!"
+</h2>
       <Select
         options={countries}
         value={country}

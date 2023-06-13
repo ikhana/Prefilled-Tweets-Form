@@ -19,7 +19,8 @@ function GroupStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>What group do you belong to?</h2>
+      <h2 className='text-shine'>"Time to pick your crew! What group are you part of? Your choice might tip the cosmic scales in your favor!"
+</h2>
       <RadioGroup 
         horizontal={false} 
         value={group}

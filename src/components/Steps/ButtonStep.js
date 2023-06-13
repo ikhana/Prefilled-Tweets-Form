@@ -17,7 +17,9 @@ const FinalStep = ({ formData }) => {
   return (
     <div className="final-step-container">
     
-      <h3>Your message:</h3>
+      <h5 className='text-shine'>"Stellar work, cadet! You've made it to the last frontier. 
+Before you hit 'Post to Twitter', remember, the stars are watching! Copy the promotional text below and create a LinkedIn post as well. This is your chance to shine brighter than the rest. So be sure to post on both platforms, because that's where we'll be hunting for our winners. If your journey looks good, hit 'Post to Twitter' and let the space race begin!"
+</h5>
       <textarea readonly value={message} />
       <button onClick={handleClick}>Post to Twitter</button>
     </div>

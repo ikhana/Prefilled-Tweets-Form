@@ -34,7 +34,8 @@ function UsernameStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>Enter your twitter handle</h2>
+      <h2 className='text-shine'>"Alright, commander! It's time to identify your Twitter handle. This is your personal badge in our cosmos. Enter it below and let's keep flying!"
+</h2>
       <input
         type="text"
         placeholder="Username"
