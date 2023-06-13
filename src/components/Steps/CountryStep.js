@@ -8,7 +8,8 @@ function CountryStep({ formData, setFormData }) {
   const navigate = useNavigate();
 
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState(formData.country || null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -23,24 +24,35 @@ function CountryStep({ formData, setFormData }) {
   }, []);
 
   const handleNext = () => {
+    if (!country || !country.value) {
+      setError("Please select a country.");
+      return;
+    }
     setFormData({ ...formData, country: country.value });
     navigate('/step-five');  // or whatever is the next step
   };
 
+  const handleBack = () => {
+    navigate(-1); // Goes back to the previous page (StepThree)
+  }
+
   return (
     <div className="username-container">
       <h2 className='text-shine'>Select your country</h2>
-     <Select
-  options={countries}
-  value={country}
-  onChange={setCountry}
-  className="select"
-  styles={{
-    option: provided => ({ ...provided, color: 'black' }),
-  
-  }}
-/>
-      <button onClick={handleNext} disabled={!country}>Next</button>
+      <Select
+        options={countries}
+        value={country}
+        onChange={setCountry}
+        className="select"
+        styles={{
+          option: provided => ({ ...provided, color: 'black' }),
+        }}
+      />
+    {error && <p style={{ color: "red", backgroundColor: "white" }}>{error}</p>}
+      <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
+        <button onClick={handleBack}>Back</button>
+        <button onClick={handleNext} disabled={!country}>Next</button>
+      </div>
     </div>
   );
 }

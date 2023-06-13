@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import './FinalStep.css'; 
 
 const FinalStep = ({ formData }) => {
-  const navigate = useNavigate();
+ 
 
   // Let's say the code is a random string. You may replace it with your actual logic
   const code = Math.random().toString(36).substring(2, 8).toUpperCase();

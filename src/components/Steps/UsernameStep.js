@@ -40,11 +40,13 @@ function UsernameStep({ formData, setFormData }) {
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        maxLength={15} // Twitter handles are 15 characters max
+        maxLength={30} 
       />
       {error && <p>{error}</p>}
-      <button onClick={handleNext}>Next</button>
-      <button onClick={handleBack}>Back</button>
+      <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
+        <button onClick={handleBack}>Back</button>
+        <button onClick={handleNext}>Next</button>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RadioGroup, Radio } from 'react-radio-group';
+import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import './GroupStep.css';
-
 
 function GroupStep({ formData, setFormData }) {
   const navigate = useNavigate();
@@ -14,25 +13,26 @@ function GroupStep({ formData, setFormData }) {
     setFormData({ ...formData, group });
     navigate('/final-step');
   }
+  const handleBack = () => {
+    navigate(-1); // Goes back to the previous page (StepThree)
+  }
 
   return (
     <div className="username-container">
       <h2 className='text-shine'>What group do you belong to?</h2>
       <RadioGroup 
-        name="group" 
-        selectedValue={group}
-        onChange={setGroup}>
-        <label>
-          <Radio value="student" /> Student
-        </label>
-        <label>
-          <Radio value="team" /> Team
-        </label>
-        <label>
-          <Radio value="general" /> General Population
-        </label>
+        horizontal={false} 
+        value={group}
+        onChange={setGroup}
+        className="radio-group">
+        <ReversedRadioButton value="student">Student</ReversedRadioButton>
+        <ReversedRadioButton value="team">Team</ReversedRadioButton>
+        <ReversedRadioButton value="general">General Population</ReversedRadioButton>
       </RadioGroup>
-      <button onClick={handleNext}>Next</button>
+      <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
+        <button onClick={handleBack}>Back</button>
+        <button onClick={handleNext} >Next</button>
+      </div>
     </div>
   );
 }
