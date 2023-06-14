@@ -8,8 +8,7 @@ function CountryStep({ formData, setFormData }) {
   const navigate = useNavigate();
 
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState(formData.country || null);
-  const [error, setError] = useState('');
+  const [country, setCountry] = useState(formData.country || { value: 'universe', label: 'Universe' });
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -24,10 +23,6 @@ function CountryStep({ formData, setFormData }) {
   }, []);
 
   const handleNext = () => {
-    if (!country || !country.value) {
-      setError("Please select a country.");
-      return;
-    }
     setFormData({ ...formData, country: country.value });
     navigate('/step-five');  // or whatever is the next step
   };
@@ -49,10 +44,10 @@ function CountryStep({ formData, setFormData }) {
           option: provided => ({ ...provided, color: 'black' }),
         }}
       />
-    {error && <p style={{ color: "red", backgroundColor: "white" }}>{error}</p>}
+      <p>Hint: Please select your country</p>
       <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
         <button onClick={handleBack}>Back</button>
-        <button onClick={handleNext} disabled={!country}>Next</button>
+        <button onClick={handleNext}>Next</button>
       </div>
     </div>
   );

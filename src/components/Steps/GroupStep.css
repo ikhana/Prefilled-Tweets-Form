@@ -1,7 +1,7 @@
 .username-container {
     position: relative;
     background-color: #1a2a3a; /* Dark Blue */
-    height: 70vh; /* full height */
+    height: 100vh; /* full height */
     display: flex;
     flex-direction: column;
     justify-content: center;

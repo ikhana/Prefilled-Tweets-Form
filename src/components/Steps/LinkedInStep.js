@@ -5,22 +5,10 @@ import './UsernameStep.css';
 function LinkedInStep({ formData, setFormData }) {
   const navigate = useNavigate();
   const [linkedin, setLinkedIn] = useState(formData.linkedin || '');
-  const [error, setError] = useState(null);
 
   const handleNext = () => {
-    // Basic validation to check if the url is a LinkedIn URL
-    try {
-      const url = new URL(linkedin);
-      if (!url.hostname.match('linkedin.com')) {
-        setError("Invalid LinkedIn URL. Please enter a valid LinkedIn URL");
-      } else {
-        setError(null);
-        setFormData({ ...formData, linkedin });
-        navigate('/step-three');
-      }
-    } catch (_) {
-      setError("Invalid URL. Please enter a valid URL");
-    }
+    setFormData({ ...formData, linkedin });
+    navigate('/step-three');
   }
 
   const handleBack = () => {
@@ -29,19 +17,19 @@ function LinkedInStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>Your LinkedIn URL Please ?</h2>
+      <h2 className='text-shine'>"Time to unleash your professional side! Share your LinkedIn URL and let us see what you bring to the table!"
+</h2>
       <input
         type="url"
         placeholder="LinkedIn URL"
         value={linkedin}
         onChange={(e) => setLinkedIn(e.target.value)}
       />
-       {error && <p>{error}</p>}
+      <p>Hint: Please enter your LinkedIn profile URL</p>
       <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
         <button onClick={handleBack}>Back</button>
         <button onClick={handleNext}>Next</button>
       </div>
-     
     </div>
   );
 }
