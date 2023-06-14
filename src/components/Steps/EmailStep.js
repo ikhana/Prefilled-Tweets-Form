@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UsernameStep.css'; 
 
 function EmailStep({ formData, setFormData }) {
   const navigate = useNavigate();
   
-  const [email, setEmail] = useState(formData.email || '');
+  // Load email from localStorage if it exists, else from formData, else default to an empty string
+  const [email, setEmail] = useState(localStorage.getItem('email') || formData.email || '');
+
+  useEffect(() => {
+    // Whenever email changes, update formData and save email in localStorage
+    setFormData({ ...formData, email });
+    localStorage.setItem('email', email);
+  }, [email]);
 
   const handleNext = () => {
-    setFormData({ ...formData, email});
     navigate('/step-four');
   }
 

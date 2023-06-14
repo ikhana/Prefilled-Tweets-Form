@@ -6,16 +6,18 @@ function UsernameStep({ formData, setFormData }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [username, setUsername] = useState(formData.username || '');
+  // Load username from localStorage if it exists, else from formData, else default to an empty string
+  const [username, setUsername] = useState(localStorage.getItem('username') || formData.username || '');
+
+ 
 
   useEffect(() => {
-    if (location.pathname === '/step-one') {
-      setUsername('');
-    }
-  }, [location]);
+    // Whenever username changes, update formData and save username in localStorage
+    setFormData({ ...formData, username });
+    localStorage.setItem('username', username);
+  }, [username]);
 
   const handleNext = () => {
-    setFormData({ ...formData, username });
     navigate('/step-two');
   }
 
@@ -25,7 +27,9 @@ function UsernameStep({ formData, setFormData }) {
 
   return (
     <div className="username-container">
-      <h2 className='text-shine'>"Alright, commander! It's time to identify your Twitter handle. This is your personal badge in our cosmos. Enter it below and let's keep flying!"
+      <h2 className='text-shine'>
+        "Alright, commander! It's time to identify your Twitter handle. 
+         This is your personal badge in our cosmos. Enter it below and let's keep flying!"
       </h2>
       <input
         type="text"

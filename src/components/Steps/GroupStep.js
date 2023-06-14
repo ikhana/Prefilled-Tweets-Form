@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import './GroupStep.css';
@@ -6,11 +6,16 @@ import './GroupStep.css';
 function GroupStep({ formData, setFormData }) {
   const navigate = useNavigate();
 
-  // Use formData.group as initial value if it exists, otherwise default to 'Student21'
-  const [group, setGroup] = useState(formData.group || 'Student21');
+  // Load group from localStorage if it exists, else from formData, else default to 'Student21'
+  const [group, setGroup] = useState(localStorage.getItem('group') || formData.group || 'Student21');
+
+  useEffect(() => {
+    // Whenever group changes, update formData and save group in localStorage
+    setFormData({ ...formData, group });
+    localStorage.setItem('group', group);
+  }, [group]);
 
   const handleNext = () => {
-    setFormData({ ...formData, group });
     navigate('/final-step');
   }
   const handleBack = () => {

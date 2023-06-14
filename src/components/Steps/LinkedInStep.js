@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UsernameStep.css'; 
 
 function LinkedInStep({ formData, setFormData }) {
   const navigate = useNavigate();
-  const [linkedin, setLinkedIn] = useState(formData.linkedin || '');
+
+  // Load LinkedIn URL from localStorage if it exists, else from formData, else default to an empty string
+  const [linkedin, setLinkedIn] = useState(localStorage.getItem('linkedin') || formData.linkedin || '');
+
+  useEffect(() => {
+    // Whenever LinkedIn URL changes, update formData and save LinkedIn URL in localStorage
+    setFormData({ ...formData, linkedin });
+    localStorage.setItem('linkedin', linkedin);
+  }, [linkedin]);
 
   const handleNext = () => {
-    setFormData({ ...formData, linkedin });
     navigate('/step-three');
   }
 
   const handleBack = () => {
-    navigate(-1);
+    navigate('/step-one');
   }
 
   return (

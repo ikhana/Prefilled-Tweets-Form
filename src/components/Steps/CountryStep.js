@@ -8,7 +8,13 @@ function CountryStep({ formData, setFormData }) {
   const navigate = useNavigate();
 
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState(formData.country || { value: 'universe', label: 'Universe' });
+  
+  // Load country from localStorage if it exists, else from formData, else default to 'Universe'
+  const [country, setCountry] = useState(
+    JSON.parse(localStorage.getItem('country')) || 
+    formData.country || 
+    { value: 'universe', label: 'Universe' }
+  );
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -22,13 +28,18 @@ function CountryStep({ formData, setFormData }) {
     fetchCountries();
   }, []);
 
-  const handleNext = () => {
+  useEffect(() => {
+    // Whenever country changes, update formData and save country in localStorage
     setFormData({ ...formData, country: country.value });
+    localStorage.setItem('country', JSON.stringify(country));
+  }, [country]);
+
+  const handleNext = () => {
     navigate('/step-five');  // or whatever is the next step
   };
 
   const handleBack = () => {
-    navigate(-1); // Goes back to the previous page (StepThree)
+    navigate('/step-three'); // Goes back to the previous page (StepThree)
   }
 
   return (
