@@ -6,13 +6,13 @@ function UsernameStep({ formData, setFormData }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Load username from localStorage if it exists, else from formData, else default to an empty string
+  
   const [username, setUsername] = useState(localStorage.getItem('username') || formData.username || '');
 
  
 
   useEffect(() => {
-    // Whenever username changes, update formData and save username in localStorage
+ 
     setFormData({ ...formData, username });
     localStorage.setItem('username', username);
   }, [username]);
@@ -22,7 +22,7 @@ function UsernameStep({ formData, setFormData }) {
   }
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   }
 
   return (

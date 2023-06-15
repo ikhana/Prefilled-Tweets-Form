@@ -1,10 +1,9 @@
-/* CountryStep.css */
+
 
 .username-container {
     position: relative;
-    background-color: #1a2a3a; /* Dark Blue */
-    height: 70vh; /* full height */
-    display: flex;
+    background-color: #1a2a3a; 
+    height: 70vh; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -20,25 +19,25 @@
 
 button {
     display: inline-flex;
-    height: 48px; /* 12 * 4px (tailwind uses 4px as its base unit) */
+    height: 48px; 
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    border: 1px solid #2d3748; /* Border color */
+    border: 1px solid #2d3748; 
     background-image: linear-gradient(110deg, #000103, 45%, #1e2631, 55%, #000103);
     background-size: 200% 100%;
     padding: 6px;
-    font-weight: 500; /* Medium font weight */
-    color: #718096; /* Slate-400 */
+    font-weight: 500; 
+    color: #718096; 
     transition: color 0.15s ease-in-out;
     animation: background-shine 2s linear infinite;
-    width: 150px; /* Set the width you want here */
-    margin-top: 20px; /* Adjust this to move the button down */
+    width: 150px; 
+    margin-top: 20px; 
 }
 
 button:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #718096; /* Ring color */
+    box-shadow: 0 0 0 2px #718096; 
 }
 
 @keyframes background-shine {

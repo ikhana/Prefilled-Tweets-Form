@@ -1,11 +1,9 @@
-/* CSS */
-
 .username-container {
   position: relative;
-  background-color: #e8ebee12; /* Dark Blue */
+  background-color: #e8ebee12; 
   width: 800px;
-  height: 600px;
-  margin: 50px auto;
+  height: 200px;
+  margin: 50px auto; 
   border: 1px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -19,9 +17,6 @@
   font-family: Arial, sans-serif;
 }
 
-body{
-  overflow: hidden;
-}
 
 
 
@@ -30,15 +25,15 @@ input[type=text], input[type=url], input[type=email] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #2d3748; /* Border color */
+  border: 1px solid #2d3748; 
   border-radius: 4px;
-  background-color: #3e4e60; /* Slightly lighter blue */
+  background-color: #3e4e60; 
   color: white;
   transition: box-shadow 0.3s ease-in-out;
 }
 
 input[type=text]:focus {
-  box-shadow: 0 0 10px 10px #718096; /* Adjust color and blur radius */
+  box-shadow: 0 0 10px 10px #718096; 
 }
 
 input[type=text]:focus::after {
@@ -52,25 +47,25 @@ input[type=text]:focus::after {
 
 button {
   display: inline-flex;
-  height: 48px; /* 12 * 4px (tailwind uses 4px as its base unit) */
+  height: 48px; 
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  border: 1px solid #2d3748; /* Border color */
+  border: 1px solid #2d3748; 
   background-image: linear-gradient(110deg, #000103, 45%, #1e2631, 55%, #000103);
   background-size: 200% 100%;
   padding: 6px;
-  font-weight: 500; /* Medium font weight */
-  color: #718096; /* Slate-400 */
+  font-weight: 500; 
+  color: #718096; 
   transition: color 0.15s ease-in-out;
   animation: background-shine 2s linear infinite;
-  width: 150px; /* Set the width you want here */
-  margin-top: 20px; /* Adjust this to move the button down */
+  width: 150px; 
+  margin-top: 20px; 
 }
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #718096; /* Ring color */
+  box-shadow: 0 0 0 2px #718096;
 }
 
 @keyframes background-shine {
@@ -87,8 +82,8 @@ button:focus {
   background-image: linear-gradient(110deg, #f8f5f5, 45%, #1e293b, 55%, #939393);
   background-size: 250% 100%;
   -webkit-background-clip: text;
-  background-clip: text; /* this may not be recognized in some browsers */
+  background-clip: text; 
   color: transparent;
-  font-size: 1.25rem; /* text-xl in Tailwind is equivalent to 1.25rem */
+  font-size: 1.25rem; 
   animation: background-shine 15s linear infinite;
 }
